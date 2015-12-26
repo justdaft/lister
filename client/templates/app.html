@@ -1,0 +1,27 @@
+<section id="menu">
+
+  <div class="list-todos">
+    <a class="js-new-list link-list-new">
+      <span class="icon-plus"></span>New List</a>
+
+    <ul class="list-todo {{activeListClass}}">
+      <li *ngFor='#list of lists'>
+        <a>{{list.name}}</a>
+
+      </li>
+    </ul>
+
+    <!-- {{#each lists}}
+        <a href="{{pathFor 'listsShow'}}" class="list-todo {{activeListClass}}" title="{{name}}">
+          {{#if userId}}
+            <span class="icon-lock"></span>
+          {{/if}}
+          {{#if incompleteCount}}
+            <span class="count-list">{{incompleteCount}}</span>
+          {{/if}}
+          name
+        </a>
+      {{/each}} -->
+
+  </div>
+</section>
