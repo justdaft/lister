@@ -1,17 +1,16 @@
-<section id="menu">
+<div id="container">
+  <section id="menu">
+    <div class="list-todos">
+      <a class="js-new-list link-list-new">
+        <span class="icon-plus"></span>New List</a>
 
-  <div class="list-todos">
-    <a class="js-new-list link-list-new">
-      <span class="icon-plus"></span>New List</a>
+      <ul class="list-todo {{activeListClass}}">
+        <li *ngFor='#list of lists'>
+          <a>{{list.name}}</a>
+        </li>
+      </ul>
 
-    <ul class="list-todo {{activeListClass}}">
-      <li *ngFor='#list of lists'>
-        <a>{{list.name}}</a>
-
-      </li>
-    </ul>
-
-    <!-- {{#each lists}}
+      <!-- {{#each lists}}
         <a href="{{pathFor 'listsShow'}}" class="list-todo {{activeListClass}}" title="{{name}}">
           {{#if userId}}
             <span class="icon-lock"></span>
@@ -23,5 +22,11 @@
         </a>
       {{/each}} -->
 
-  </div>
-</section>
+    </div>
+  </section>
+  <div class="content-overlay"></div>
+
+<div id="content-container">
+<lists-show>lists show</lists-show>
+</div>
+</div>

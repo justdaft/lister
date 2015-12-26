@@ -7,6 +7,8 @@ import {bootstrap} from 'angular2-meteor';
 
 import {MeteorComponent} from 'angular2-meteor';
 import {LISTS_COLLECTION} from '../lib/collections';
+import {ListsShowComponent} from './lists-show';
+
 enableProdMode();
 
 @Component({
@@ -14,7 +16,7 @@ enableProdMode();
 })
 @View({
   templateUrl: './client/templates/app.html',
-  directives: [FORM_DIRECTIVES, NgFor, NgIf]
+  directives: [FORM_DIRECTIVES, NgFor, NgIf, ListsShowComponent]
 })
 export class AppComponent extends MeteorComponent {
   lists: any;
