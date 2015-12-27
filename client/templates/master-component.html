@@ -1,0 +1,13 @@
+<div class="list-todos">
+  <a class="js-new-list link-list-new">
+    <span class="icon-plus"></span>New List</a>
+
+  <ul class="list-todo {{activeListClass}}">
+    <li
+        *ngFor="#list of lists"
+        role="presentation"
+        [class.active]="selected == list">
+        <a (click)="onClick(list)" (click)="selectedChange.next(list)">{{list.name}}</a>
+      </li>
+  </ul>
+</div>

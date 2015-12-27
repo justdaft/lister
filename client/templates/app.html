@@ -1,32 +1,15 @@
 <div id="container">
   <section id="menu">
-    <div class="list-todos">
-      <a class="js-new-list link-list-new">
-        <span class="icon-plus"></span>New List</a>
-
-      <ul class="list-todo {{activeListClass}}">
-        <li *ngFor='#list of lists'>
-          <a>{{list.name}}</a>
-        </li>
-      </ul>
-
-      <!-- {{#each lists}}
-        <a href="{{pathFor 'listsShow'}}" class="list-todo {{activeListClass}}" title="{{name}}">
-          {{#if userId}}
-            <span class="icon-lock"></span>
-          {{/if}}
-          {{#if incompleteCount}}
-            <span class="count-list">{{incompleteCount}}</span>
-          {{/if}}
-          name
-        </a>
-      {{/each}} -->
-
-    </div>
+    <master-component [(selected)]="selectedList" ></master-component>
   </section>
   <div class="content-overlay"></div>
-
-<div id="content-container">
-<lists-show>lists show</lists-show>
+  <div id="content-container">
+    <detail-component [list]="selectedList" ></detail-component>
+  </div>
 </div>
+<!--
+<div class="row">
+  <master-component [(selected)]="selectedList" class="col-xs-4"></master-component>
+  <detail-component [list]="selectedList" class="col-xs-8"></detail-component>
 </div>
+</div> -->
