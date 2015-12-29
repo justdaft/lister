@@ -1,0 +1,18 @@
+<li [ngClass]="{checked: todo.checked, private: todo.private}">
+  <!-- <button class="delete" (click)="deleteTodo)">&times;</button> -->
+
+  <input type="checkbox" #cb
+    [ngModel]="todo.checked"
+    (change)="setChecked(cb.checked)"
+    class="toggle-checked" />
+
+  <!-- <button class="toggle-private" (click)="setAccess()">
+    {{todo.private ? "Private" : "Public"}}
+  </button> -->
+  <input type="text" value="{{todo.text}}">
+  <a class="delete-item" (click)="deleteTodo()" href="#"><span class="icon-trash"></span></a>
+  <!-- <span class="text">
+    <strong>{{todo.username}}</strong>
+    {{todo.username ? '-' : ''}} {{todo.text}}
+  </span> -->
+</li>

@@ -15,8 +15,8 @@ import {LISTS_COLLECTION} from '../lib/collections';
 })
 
 export class MasterComponent extends MeteorComponent {
-@Input() selected: any;
-@Output() selectedList: EventEmitter<any> = new EventEmitter();
+ @Input() selected: any;
+ @Output() selectedList: EventEmitter<any> = new EventEmitter();
  @Output() selectedChange: EventEmitter<any> = new EventEmitter();
   lists: any;
 
@@ -30,6 +30,28 @@ export class MasterComponent extends MeteorComponent {
     console.log('MasterComponent:' + list._id);
   };
 
+// clickNewList(name: string){
+//   let list = {
+//     name: name,
+//     incompleteCount: 0,
+//   }
+//   let result = LISTS_COLLECTION.insert(list);
+//   console.log('inserted: ' + result);
+//
+// }
+addList(listName: string) {
+  var id = LISTS_COLLECTION.insert({
+    name: listName,
+    incompleteCount: 0,
+  });
+  console.log('inserted: ' + id);
+}
+
+// addList(name: string){
+//     var list = {name: name, incompleteCount: 10};
+//     var id = LISTS_COLLECTION.insert(list);
+//     console.log('inserted: ' + id);
+//   }
 
   SaveList(list, template) {
     // Session.set(EDITING_KEY, false);

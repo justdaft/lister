@@ -1,14 +1,23 @@
 <div class="page lists-show">
   <nav *ngIf="list" class="js-title-nav">
+    <!-- <form (submit)="add($event)" [ngFormModel]="taskForm">
 
-    <form class="js-edit-form list-edit-form">
-      <input name="name" type="text" value="{{name}}">
+      <label for="taskName">Task Name</label>
+      <input type="text" id="taskName" ngControl="taskName">
+      <label for="taskQty">Qty</label>
+      <input type="text" id="taskQty" ngControl="taskQty">
+
+      <button type="submit">Add</button>
+    </form> -->
+
+    <!-- <form class="js-edit-form list-edit-form" (submit)="addTodo(todoName)">
+      <input name="todoName" type="text" [(ngModel)]="todoName">
       <div class="nav-group right">
         <a class="js-cancel nav-item" href="#">
           <span class="icon-close js-cancel" title="Cancel"></span>
         </a>
       </div>
-    </form>
+    </form> -->
 
     <div class="nav-group">
       <a class="js-menu nav-item" href="#">
@@ -43,10 +52,12 @@
       </div>
     </div>
 
-    <form class="js-todo-new todo-new input-symbol">
-      <input placeholder="Type to add new tasks" type="text">
+    <form (submit)="addTodo(todoName)" class="new-task js-todo-new todo-new input-symbol">
+      <input [(ngModel)]="todoName" placeholder="Type to add new todo" type="text"/>
       <span class="icon-add js-todo-add"></span>
+
     </form>
+
   </nav>
   <div *ngIf="!list">
     no list
@@ -55,16 +66,24 @@
     <ul class="list-todo">
 
       <li *ngFor='#todo of todos'>
-        <div class="list-item">
-          <label class="checkbox">
-            <input type="checkbox" checked="{{todo.checked}}" name="checked">
+        <todo-component [todo]="todo" [_listId]="_listId"></todo-component>
+        <!-- <div class="list-item"> -->
+
+        <!-- <input type="checkbox" #cb
+             [ngModel]="task.checked"
+             (change)="setChecked(cb.checked)"
+             class="toggle-checked" /> -->
+
+        <!-- <label class="checkbox">
+            <input type="checkbox" #cb [ngModel]="todo.checked"
+            (change)="setChecked(cb.checked)">
             <span class="checkbox-custom"></span>
           </label>
 
-          <input type="text" value="{{todo.text}}" placeholder="Task name">
+          <input type="text" value="{{todo.text}}">
           <a class="js-delete-item delete-item" href="#"><span class="icon-trash"></span></a>
-        </div>
+        </div> -->
       </li>
     </ul>
+   </div>
   </div>
-</div>
