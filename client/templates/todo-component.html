@@ -3,7 +3,7 @@
 
   <input type="checkbox" #cb
     [ngModel]="todo.checked"
-    (change)="setChecked(cb.checked)"
+    (change)="setCheckedTodo(cb.checked)"
     class="toggle-checked" />
 
   <!-- <button class="toggle-private" (click)="setAccess()">

@@ -30,6 +30,8 @@ export class MasterComponent extends MeteorComponent {
     console.log('MasterComponent:' + list._id);
   };
 
+
+
 // clickNewList(name: string){
 //   let list = {
 //     name: name,

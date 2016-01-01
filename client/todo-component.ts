@@ -14,16 +14,15 @@ import {TODOS_COLLECTION, LISTS_COLLECTION} from '../lib/collections';
 })
 export class TodoComponent extends MeteorComponent {
   @Input() todo: any;
-@Input() _listId: any;
+  @Input() _listId: any;
 
-  setChecked(checked) {
-    this.call('setChecked', this.todo._id, checked);
+  setCheckedTodo(checked) {
+    this.call('setCheckedTodo', this.todo._id, checked);
   };
 
   deleteTodo() {
   this.call('deleteTodo', this.todo._id);
   LISTS_COLLECTION.update(this._listId, { $inc: { incompleteCount: -1 } });
-  this.todoName = '';
 }
 
 

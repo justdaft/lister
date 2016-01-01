@@ -1,7 +1,7 @@
 <div class="list-todos">
-  <a class="js-new-list link-list-new">
-    <form class="new-task" (submit)="addList(listName)">
-    <input [(ngModel)]="listName" type="text" placeholder="Type to add new list" />
+  <a class="link-list-new">
+    <form class="new-task" >
+    <input [(ngModel)]="listName" type="text" placeholder="Type to add new list" (keyup.enter)="addList(listName)"/>
   </form>
 </a>
   <ul class="list-todo {{activeListClass}}">

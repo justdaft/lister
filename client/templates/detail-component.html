@@ -25,7 +25,7 @@
       </a>
     </div>
 
-    <h1 class="js-edit-list title-page">
+    <h1 class="title-page">
       <span class="title-wrapper">{{list.name}}</span>
       <span class="count-list"></span>
     </h1>
@@ -42,20 +42,19 @@
       </div>
 
       <div class="options-web">
-        <a class="js-toggle-list-privacy nav-item">
+        <a class="nav-item">
           <!-- <span class="icon-lock" title="Make list public"></span> -->
           <span class="icon-unlock" title="Make list private"></span>
         </a>
-        <a class="js-delete-list nav-item">
-          <span class="icon-trash" title="Delete list"></span>
+        <a class="nav-item">
+          <span class="icon-trash" title="Delete list" (click)="deleteList(list)"></span>
         </a>
       </div>
     </div>
 
-    <form (submit)="addTodo(todoName)" class="new-task js-todo-new todo-new input-symbol">
+    <form (submit)="addTodo(todoName)" class="new-task todo-new input-symbol">
       <input [(ngModel)]="todoName" placeholder="Type to add new todo" type="text"/>
-      <span class="icon-add js-todo-add"></span>
-
+      <span class="icon-add"></span>
     </form>
 
   </nav>

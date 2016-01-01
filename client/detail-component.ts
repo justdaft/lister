@@ -20,8 +20,8 @@ export class DetailComponent extends MeteorComponent implements OnChanges {
   _listId: string;
   todoName: string;
   todo: string;
+
   ngOnChanges(changes: { [propName: string]: any }) {
-    this.todos = '';
     if (this.list) {
       this._listId = changes["list"].currentValue._id;
       // this.subscribe(`tasksPub`, id, () => {
@@ -35,17 +35,16 @@ export class DetailComponent extends MeteorComponent implements OnChanges {
     }
   }
 
+  deleteList(list: any) {
+    this.call('deleteList', list._id);
+    this.call('deleteTodos', list._id);
+  }
+
   addTodo(todoName: string) {
     if (!todoName) {
       return;
     }
-    TODOS_COLLECTION.insert({
-      listId: this._listId,
-      text: todoName,
-      checked: false,
-      createdAt: new Date()
-    });
-    LISTS_COLLECTION.update(this._listId, { $inc: { incompleteCount: 1 } });
+    this.call('addTodo', todoName, this.list._id );
     this.todoName = '';
     console.log('inserted: ');
   }
@@ -55,37 +54,10 @@ export class DetailComponent extends MeteorComponent implements OnChanges {
       checked);
   }
 
-  // OnInit() {
-  //   if (this.list) {
-  //     let listId = this.list._id;
-  //     this.todos = TODOS_COLLECTION.find({ listId: listId });
-  //     console.log('lists-show: ' + listId);
-  //   }
-  //   this.todos = TODOS_COLLECTION.find({});
-  // };
-
-  SaveList(list, template) {
-    // Session.set(EDITING_KEY, false);
-    // Lists.update(list._id, { $set: { name: template.$('[name=name]').val() } });
-  };
-
-  DeleteList(list) {
-    // ensure the last public list cannot be deleted.
-    // if (!list.userId && Lists.find({ userId: { $exists: false } }).count() === 1) {
-    //   return alert('Sorry, you cannot delete the final public list!');
-    // }
-  };
-
-  ClickEditList(event, template) {
-    //  editList(this, template);
-  };
-
-  ClickToggleListPrivacy(event, template) {
-    //  toggleListPrivacy(this, template);
-  };
-
-  ClickDeleteList(event, template) {
-    //  deleteList(this, template);
+  get todoCount() {
+    return TODOS_COLLECTION.find({
+      checked: false
+    }).count();
   };
 
   constructor() {
